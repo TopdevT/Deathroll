@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- Tailwind CDN -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css">
+        <style>
+            .spin-button-none::-webkit-outer-spin-button,
+            .spin-button-none::-webkit-inner-spin-button {
+            appearance: none;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- This is an Javascript implementation of World of warcraft's Deathroll -->
+        <!-- 1. Choose a number (eg. 100 or 188) (x) -->
+        <!-- 2. Generate a random number between 1 and X -->
+        <!-- 3. If the number is 1 the player who clicked loses -->
+        <!-- Ask the user to input a number -->
+        <div class="flex flex-row justify-center w-screen h-full">
+            <div class="flex flex-col justify-center items-center">
+                <h1 class="text-center text-4xl font-bold">Deathroll</h1>
+                <input class="spin-button-none w-10 text-center bg-gray-700 mt-4" type="number" name="tijs" value="0" placeholder="Pick a number!">
+                <button onclick="run()" class="px-6 bg-gray-900 border border-black border-1 shadow-lg mt-2 text-white font-bold hover:bg-gray-700">Roll</button>
+                <span id="output"></span>
+            </div>
+        </div>
+        <script>
+            let number = 0
+            // Get input as variable
+            let input = document.querySelector('input')
+            let output = document.getElementById('output')
+            function run()
+            {
+                if (input.value != 0) {
+                    input.style.display = 'none'
+                    // Generate a random number between 0 and number
+                    number = Math.floor(Math.random() * input.value) + 1
+                    input.value = 0
+                } else {
+                    // Generate a random number between 0 and number
+                    number = Math.floor(Math.random() * number) + 1
+                }
+     
+                output.innerText = number
+     
+                if (number == 1) {
+                    output.innerHTML = "Y"
+                }
+            }
+        </script>
+    </body>
+</body>
+</html>
